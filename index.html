@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Serenazgo Alerta Huancayo — Inicio</title>
+<meta name="description" content="Central de emergencias y patrullaje de Serenazgo Huancayo: reporta incidentes, conoce las zonas de patrullaje y solicita apoyo las 24 horas.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=IBM+Plex+Sans:wght@400;600&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+
+<!-- Hojas de Estilo -->
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/login.css">
+<link rel="stylesheet" href="css/index.css">
+</head>
+<body data-page="inicio">
+
+<!-- Barra Superior con Alto Contraste para la Línea 105 -->
+<div class="emergency-bar">
+  <div class="container">
+    <span>Central de emergencias 24/7: <a href="tel:0641234567">(064) 123-4567</a></span>
+    <span>Línea nacional de emergencia: <a href="tel:105" class="phone-105">105</a></span>
+  </div>
+</div>
+
+<header class="site-header">
+  <div class="container">
+    <a class="brand" href="index.html">
+      <svg class="brand-mark" viewBox="0 0 40 40" role="img" aria-label="Escudo de Serenazgo Alerta Huancayo">
+        <circle cx="20" cy="20" r="18" fill="#ff5a1f" />
+        <path d="M20 8 L28 14 L28 24 L20 32 L12 24 L12 14 Z" fill="#0e1a2b" />
+      </svg>
+      Serenazgo Alerta Huancayo
+    </a>
+    
+    <nav class="main-nav" aria-label="Navegación principal">
+      <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="servicios.html">Servicios</a></li>
+        <li><a href="como-funciona.html">Cómo funciona</a></li>
+        <li><a href="formulario.html">Reportar</a></li>
+        <li><a href="contacto.html">Ubicación y contacto</a></li>
+      </ul>
+    </nav>
+
+    <!-- Contenedor dinámico de sesión -->
+    <div id="nav-auth-container" class="nav-auth-container">
+      <button type="button" id="btn-open-login" class="btn-nav-login">Iniciar sesión</button>
+      <button type="button" id="btn-open-register" class="btn-nav-register">Crear cuenta</button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="container">
+      <div>
+        <p class="hero-eyebrow">MUNICIPALIDAD PROVINCIAL DE HUANCAYO — SUBGERENCIA DE SERENAZGO</p>
+        <h1>Patrullaje y respuesta a emergencias las 24 horas</h1>
+        <p>Serenazgo Alerta Huancayo coordina el patrullaje de la provincia y atiende reportes ciudadanos en tiempo real: robos, disturbios, accidentes de tránsito y situaciones de riesgo en la vía pública.</p>
+        <div class="hero-actions">
+          <a class="btn btn-auxilio" href="formulario.html">Botón de auxilio</a>
+          <a class="btn btn-outline btn-como-funciona" href="como-funciona.html">Cómo funciona</a>
+        </div>
+      </div>
+
+      <!-- Carrusel Fotográfico Continuo -->
+      <div class="hero-carousel" id="hero-carousel">
+        <div class="carousel-slide active">
+          <img src="https://images.unsplash.com/photo-1541872703-74c5e44368f9?auto=format&fit=crop&w=1200&q=80" alt="Unidades operativas de Serenazgo" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1590856029826-c7a73142bbf1?auto=format&fit=crop&w=1200&q=80';">
+          <div class="carousel-overlay"></div>
+        </div>
+        <div class="carousel-slide">
+          <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1200&q=80" alt="Centro de Monitoreo de Videovigilancia" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80';">
+          <div class="carousel-overlay"></div>
+        </div>
+        <div class="carousel-slide">
+          <img src="https://images.unsplash.com/photo-1508847154043-be5407fcaa5a?auto=format&fit=crop&w=1200&q=80" alt="Patrullaje Nocturno Municipal" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1582139329536-e7284fece509?auto=format&fit=crop&w=1200&q=80';">
+          <div class="carousel-overlay"></div>
+        </div>
+        <div class="carousel-dots">
+          <span class="dot active"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Indicadores Estadísticos Animados -->
+  <section class="stats">
+    <div class="container">
+      <dl class="stat">
+        <dt class="stat-number" data-target="24" data-suffix="/7">0</dt>
+        <dd>Atención permanente todos los días del año</dd>
+      </dl>
+      <dl class="stat">
+        <dt class="stat-number" data-target="5" data-suffix="">0</dt>
+        <dd>Zonas de patrullaje activo en la provincia</dd>
+      </dl>
+      <dl class="stat">
+        <dt class="stat-number" data-target="8" data-prefix="~" data-suffix=" min">0</dt>
+        <dd>Tiempo promedio de respuesta en zona urbana</dd>
+      </dl>
+      <dl class="stat">
+        <dt class="stat-number" data-target="42" data-suffix="">0</dt>
+        <dd>Unidades móviles y a pie en servicio</dd>
+      </dl>
+    </div>
+  </section>
+
+  <!-- SECCIÓN: ATENCIÓN SEGÚN EL TIPO DE INCIDENTE -->
+  <section class="section-incidents">
+    <div class="container">
+      <h2 class="section-title">Atención según el tipo de incidente</h2>
+      <p class="section-subtitle">
+        Cada reporte se deriva a la unidad correspondiente según el trámite y el nivel de urgencia.
+      </p>
+
+      <div class="incidents-grid">
+        <!-- Tarjeta 1: Botón de auxilio -->
+        <article class="incident-card" data-incident-id="boton-auxilio">
+          <div class="incident-media">
+            <img src="https://cloudfront-us-east-1.images.arcpublishing.com/lacronicadehoy/CXZVK4PN666DHFY7QMBTHYK5JA.jpg" alt="Botón de auxilio">
+            <button type="button" class="btn-card-details">Ver detalles &rarr;</button>
+          </div>
+          <div class="incident-content">
+            <h3>Botón de auxilio</h3>
+            <p>Reporte inmediato de emergencias en curso: robos, agresiones o personas en riesgo.</p>
+          </div>
+        </article>
+
+        <!-- Tarjeta 2: Patrullaje por zonas -->
+        <article class="incident-card" data-incident-id="patrullaje-zonas">
+          <div class="incident-media">
+            <img src="https://images.unsplash.com/photo-1569974498991-d3c12a504f95?auto=format&fit=crop&w=800&q=80" alt="Patrullaje por zonas">
+            <button type="button" class="btn-card-details">Ver detalles &rarr;</button>
+          </div>
+          <div class="incident-content">
+            <h3>Patrullaje por zonas</h3>
+            <p>Consulta el recorrido y horario de las unidades asignadas a tu sector.</p>
+          </div>
+        </article>
+
+        <!-- Tarjeta 3: Central de radio -->
+        <article class="incident-card" data-incident-id="central-radio">
+          <div class="incident-media">
+            <img src="https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&w=800&q=80" alt="Central de radio">
+            <button type="button" class="btn-card-details">Ver detalles &rarr;</button>
+          </div>
+          <div class="incident-content">
+            <h3>Central de radio</h3>
+            <p>Línea directa con el operador de turno para coordinar el apoyo en campo.</p>
+          </div>
+        </article>
+      </div>
+
+      <div class="section-actions" style="margin-top: 2rem;">
+        <a href="servicios.html" class="btn btn-outline">Ver todos los servicios</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- VENTANA MODAL DE AUTENTICACIÓN (INGRESO A LA CENTRAL) -->
+<div id="auth-modal-overlay" class="modal-overlay" aria-hidden="true">
+  <div class="auth-modal-card" role="dialog" aria-modal="true">
+    <button type="button" id="btn-close-auth-modal" class="modal-close-btn" aria-label="Cerrar modal">&times;</button>
+    
+    <div class="auth-modal-tabs">
+      <button type="button" id="tab-login" class="auth-tab active">Iniciar Sesión</button>
+      <button type="button" id="tab-register" class="auth-tab">Crear Cuenta</button>
+    </div>
+
+    <!-- Formulario Iniciar Sesión -->
+    <form id="form-modal-login" class="auth-form">
+      <h2 class="auth-modal-title">Ingreso a la Central</h2>
+      <p class="auth-modal-subtitle">Accede con tu cuenta registrada de vecino o personal autorizado.</p>
+      
+      <div class="form-group">
+        <label for="modal-login-correo">Correo electrónico</label>
+        <input type="email" id="modal-login-correo" required placeholder="ejemplo@correo.com">
+      </div>
+      <div class="form-group">
+        <label for="modal-login-pass">Contraseña</label>
+        <input type="password" id="modal-login-pass" required placeholder="••••••••">
+      </div>
+      <button type="submit" class="btn-submit-auth">Ingresar a la Central</button>
+    </form>
+
+    <!-- Formulario Registro -->
+    <form id="form-modal-register" class="auth-form" style="display: none;">
+      <h2 class="auth-modal-title">Crear Cuenta</h2>
+      <p class="auth-modal-subtitle">Regístrate para enviar reportes y solicitar asistencia en tiempo real.</p>
+
+      <div class="form-group">
+        <label for="modal-reg-nombre">Nombre completo</label>
+        <input type="text" id="modal-reg-nombre" required placeholder="Joseph Buendia">
+      </div>
+      <div class="form-group">
+        <label for="modal-reg-correo">Correo electrónico</label>
+        <input type="email" id="modal-reg-correo" required placeholder="ejemplo@correo.com">
+      </div>
+      <div class="form-group">
+        <label for="modal-reg-pass">Contraseña</label>
+        <input type="password" id="modal-reg-pass" required placeholder="Mínimo 4 caracteres">
+      </div>
+      <button type="submit" class="btn-submit-auth">Crear Cuenta</button>
+    </form>
+  </div>
+</div>
+
+<!-- VENTANA MODAL EMERGENTE DE INCIDENTES -->
+<div id="incident-modal-overlay" class="modal-overlay" aria-hidden="true">
+  <div class="modal-card" role="dialog" aria-modal="true">
+    <div class="modal-header-img">
+      <img id="incident-modal-img" src="" alt="Detalle del servicio">
+      <button type="button" id="btn-close-incident-modal" class="modal-close-btn" aria-label="Cerrar modal">&times;</button>
+    </div>
+
+    <div class="modal-body">
+      <span id="incident-modal-badge" class="modal-badge"></span>
+      <h2 id="incident-modal-title" class="modal-title"></h2>
+      <p id="incident-modal-desc" class="modal-description"></p>
+      
+      <div class="modal-section-details">
+        <h4 class="modal-subtitle">Características clave del servicio:</h4>
+        <ul id="incident-modal-list" class="modal-list"></ul>
+      </div>
+
+      <hr class="modal-divider">
+
+      <div class="modal-footer-action">
+        <button id="incident-modal-action-btn" type="button" class="btn-modal-primary"></button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Scripts JavaScript -->
+<script type="module" src="js/auth.js"></script>
+<script type="module" src="js/index.js"></script>
+<script type="module" src="js/nav-auth.js"></script>
+</body>
+</html>

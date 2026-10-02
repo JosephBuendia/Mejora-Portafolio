@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mis Registros - Serenazgo Alerta Huancayo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="css/actualizar.css">
+</head>
+<body>
+
+  <!-- Topbar de Emergencias -->
+  <div class="topbar">
+    <div class="topbar-content">
+      <span>Central de emergencias 24/7: <strong class="text-orange">(064) 123-4567</strong></span>
+      <span>Línea nacional de emergencia: <span class="badge-red">105</span></span>
+    </div>
+  </div>
+
+  <!-- Barra de Navegación -->
+  <header class="navbar">
+    <div class="nav-logo">
+      <div class="logo-icon"></div>
+      <span>Serenazgo Alerta Huancayo</span>
+    </div>
+    <nav class="nav-links">
+  <a href="index.html">Inicio</a>
+  <a href="servicios.html">Servicios</a>
+  <a href="formulario.html">Reportar</a>
+  <a href="contacto.html">Ubicación y contacto</a>
+</nav>
+    <div id="nav-auth-container" class="nav-auth">
+      <!-- Se inyectará desde auth.js -->
+    </div>
+  </header>
+
+  <!-- Encabezado Principal -->
+  <section class="page-header">
+    <div class="header-content">
+      <h1>Mis Reportes Ciudadanos</h1>
+      <p>Consulta el estado de tus alertas y actualiza la información de los incidentes que aún se encuentran pendientes de atención por nuestras unidades.</p>
+    </div>
+  </section>
+
+  <!-- Contenedor Principal de la Tabla -->
+  <main class="main-container">
+    <div class="records-card">
+      <div class="card-header">
+        <h2><i class="fas fa-list-check text-orange"></i> Historial de Alertas de <span id="nombreUsuarioTitulo">Usuario</span></h2>
+      </div>
+
+      <div class="table-responsive">
+        <table class="records-table">
+          <thead>
+            <tr>
+              <th>Código</th>
+              <th>Fecha</th>
+              <th>Tipo de Incidencia</th>
+              <th>Ubicación</th>
+              <th>Descripción / Sustento</th>
+              <th>Estado</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody id="tabla-registros-body">
+            <!-- Los registros se inyectarán vía JS -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+
+  <!-- Modal Oscuro para Editar Descripción -->
+  <div id="modalEditar" class="modal-overlay" aria-hidden="true">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3><i class="fas fa-pen-to-square text-orange"></i> Actualizar Reporte</h3>
+        <button type="button" id="btnCerrarModal" class="btn-close"><i class="fas fa-times"></i></button>
+      </div>
+      <form id="formEditar">
+        <input type="hidden" id="editCodigo">
+        <div class="form-group">
+          <label for="editDescripcion">Detalles Adicionales del Incidente</label>
+          <textarea id="editDescripcion" rows="5" placeholder="Añade características de sospechosos, vehículos, o detalles relevantes..." required></textarea>
+        </div>
+        <div class="modal-actions">
+          <button type="button" id="btnCancelarEdicion" class="btn-outline">Cancelar</button>
+          <button type="submit" class="btn-primary"><i class="fas fa-save"></i> Guardar Cambios</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script type="module" src="js/actualizar.js"></script>
+</body>
+</html>

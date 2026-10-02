@@ -1,0 +1,594 @@
+/* ==========================================
+   HOJA DE ESTILOS: como-funciona.css
+   Estilo Oscuro Oficial - Serenazgo Huancayo
+   ========================================== */
+
+:root {
+  --font-primary: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --bg-dark: #060d17;
+  --bg-header: #0a1320;
+  --bg-card: #0d1726;
+  --bg-card-body: #0f1d30;
+  --border-color: #1c2b3d;
+  --border-hover: #314763;
+  --text-main: #ffffff;
+  --text-muted: #94a3b8;
+  --accent-orange: #ff5200;
+  --accent-orange-hover: #e04800;
+  --accent-yellow: #eab308;
+  --border-yellow: #854d0e;
+  --bg-yellow-badge: #271a0c;
+}
+
+body {
+  background-color: var(--bg-dark);
+  color: var(--text-main);
+  font-family: var(--font-primary);
+  margin: 0;
+  padding: 0;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 1. BARRA SUPERIOR DE EMERGENCIA */
+.top-emergency-bar {
+  background-color: var(--accent-orange);
+  color: #000000;
+  font-size: 0.85rem;
+  font-weight: 700;
+  padding: 0.45rem 1.5rem;
+  letter-spacing: -0.01em;
+}
+
+.top-bar-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* 2. NAVEGACIÓN PRINCIPAL */
+.main-header {
+  background-color: var(--bg-header);
+  border-bottom: 1px solid var(--border-color);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.9rem 1.5rem;
+}
+
+.brand-logo {
+  color: #ffffff;
+  font-size: 1.15rem;
+  font-weight: 800;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  letter-spacing: -0.02em;
+}
+
+.brand-icon {
+  width: 14px;
+  height: 14px;
+  border: 3px solid var(--accent-orange);
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+}
+
+.nav-links {
+  display: flex;
+  gap: 1.6rem;
+}
+
+.nav-links a {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 0.88rem;
+  font-weight: 600;
+  transition: color 0.2s ease;
+  padding-bottom: 0.2rem;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: #ffffff;
+  border-bottom: 2px solid var(--accent-orange);
+}
+
+.nav-auth {
+  display: flex;
+  gap: 0.75rem;
+}
+
+/* 3. CONTENIDO PRINCIPAL Y HERO */
+.main-content {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 3.5rem 1.5rem 5rem 1.5rem;
+}
+
+.hero-intro {
+  margin-bottom: 3.5rem;
+}
+
+.hero-tag {
+  color: var(--accent-orange);
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin-bottom: 0.8rem;
+}
+
+.page-title {
+  font-size: 2.8rem;
+  font-weight: 800;
+  margin: 0 0 1rem 0;
+  color: #ffffff;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+}
+
+.page-subtitle {
+  color: var(--text-muted);
+  font-size: 1.05rem;
+  max-width: 650px;
+  margin: 0;
+  font-weight: 400;
+}
+
+/* 4. SECCIÓN DE PASOS NUMERADOS (01 - 06) */
+.steps-section {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 5rem;
+}
+
+.step-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 2rem;
+  padding: 1.6rem 0;
+  border-bottom: 1px solid #121e2d;
+}
+
+.step-item:last-child {
+  border-bottom: none;
+}
+
+.step-number {
+  color: var(--accent-yellow);
+  font-size: 1.2rem;
+  font-weight: 800;
+  font-family: inherit;
+  min-width: 35px;
+  padding-top: 0.1rem;
+}
+
+.step-content {
+  flex: 1;
+}
+
+.step-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 0.35rem 0;
+  letter-spacing: -0.01em;
+}
+
+.step-desc {
+  color: var(--text-muted);
+  font-size: 0.92rem;
+  margin: 0;
+  line-height: 1.55;
+}
+
+/* 5. SECCIÓN DE REQUISITOS (TARJETAS CLICKABLES PARA MODAL) */
+.requirements-section {
+  margin-top: 2rem;
+}
+
+.section-title {
+  font-size: 2.1rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 2.5rem;
+  letter-spacing: -0.02em;
+}
+
+.requirements-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.8rem;
+}
+
+/* Tarjeta Clickable */
+.req-card {
+  background-color: var(--bg-card-body);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  cursor: pointer;
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.req-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--border-hover);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.5);
+}
+
+.req-card-image-wrapper {
+  width: 100%;
+  height: 180px;
+  overflow: hidden;
+  position: relative;
+}
+
+.req-card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.req-card:hover .req-card-image {
+  transform: scale(1.05);
+}
+
+.req-card-badge {
+  position: absolute;
+  top: 0.9rem;
+  left: 0.9rem;
+  font-size: 0.72rem;
+  font-weight: 800;
+  padding: 0.35rem 0.75rem;
+  border-radius: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  backdrop-filter: blur(8px);
+}
+
+.badge-alert {
+  background-color: rgba(39, 26, 12, 0.9);
+  border: 1px solid var(--border-yellow);
+  color: var(--accent-yellow);
+}
+
+.badge-warning {
+  background-color: rgba(26, 35, 50, 0.9);
+  border: 1px solid #3b82f6;
+  color: #60a5fa;
+}
+
+.badge-info {
+  background-color: rgba(26, 43, 34, 0.9);
+  border: 1px solid #10b981;
+  color: #34d399;
+}
+
+.req-card-body {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  justify-content: space-between;
+}
+
+.req-card-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 0.6rem 0;
+  letter-spacing: -0.01em;
+}
+
+.req-card-desc {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin: 0 0 1.2rem 0;
+  line-height: 1.5;
+}
+
+.card-click-hint {
+  color: var(--accent-orange);
+  font-size: 0.85rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  transition: gap 0.2s ease;
+}
+
+.req-card:hover .card-click-hint {
+  gap: 0.6rem;
+}
+
+/* 6. MODAL INFORMATIVO DE REQUISITOS (VENTANA EMERGENTE) */
+.info-modal-card {
+  background: #0d1726;
+  border: 1px solid var(--border-hover);
+  border-radius: 14px;
+  width: 100%;
+  max-width: 560px;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.7);
+}
+
+.info-modal-header {
+  position: relative;
+  width: 100%;
+  height: 220px;
+}
+
+.info-modal-image-container {
+  width: 100%;
+  height: 100%;
+}
+
+.info-modal-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.info-modal-body {
+  padding: 1.8rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.info-modal-body .req-card-badge {
+  position: static;
+  align-self: flex-start;
+  margin-bottom: 0.8rem;
+}
+
+.info-modal-title {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin: 0 0 0.8rem 0;
+  letter-spacing: -0.02em;
+}
+
+.info-modal-desc {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin: 0 0 1.5rem 0;
+}
+
+.info-modal-subheading {
+  font-size: 0.82rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin: 0 0 0.9rem 0;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.info-modal-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.info-modal-list li {
+  color: #cbd5e1;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  line-height: 1.45;
+}
+
+.check-icon {
+  color: var(--accent-orange);
+  font-weight: 800;
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+/* 7. PIE DE PÁGINA */
+.main-footer {
+  background-color: #040910;
+  border-top: 1px solid var(--border-color);
+  padding: 2rem 1.5rem;
+  color: #64748b;
+  font-size: 0.85rem;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.footer-left {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.footer-left strong {
+  color: #94a3b8;
+}
+
+/* 8. ESTILOS BASE MODALES (OVERLAY Y AUTH) */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(4, 8, 15, 0.85);
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.25s ease;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+.modal-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.auth-modal-card {
+  background: #0d1726;
+  border: 1px solid var(--border-hover);
+  border-radius: 12px;
+  width: 100%;
+  max-width: 440px;
+  padding: 2rem;
+  position: relative;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+}
+
+.modal-close-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1.2rem;
+  background: rgba(0, 0, 0, 0.4);
+  border: none;
+  color: #ffffff;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  font-size: 1.4rem;
+  line-height: 1;
+  cursor: pointer;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s ease;
+}
+
+.modal-close-btn:hover {
+  background: var(--accent-orange);
+}
+
+.auth-modal-tabs {
+  display: flex;
+  border-bottom: 1px solid var(--border-color);
+  margin-bottom: 1.5rem;
+}
+
+.tab-btn {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: #94a3b8;
+  padding: 0.6rem;
+  font-weight: 600;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  font-family: inherit;
+}
+
+.tab-btn.active {
+  color: #ffffff;
+  border-bottom-color: var(--accent-orange);
+}
+
+.auth-modal-title {
+  font-size: 1.4rem;
+  font-weight: 800;
+  margin: 0 0 0.3rem 0;
+  color: #ffffff;
+}
+
+.auth-modal-subtitle {
+  font-size: 0.85rem;
+  color: #94a3b8;
+  margin: 0 0 1.2rem 0;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.form-group label {
+  font-size: 0.82rem;
+  color: #cbd5e1;
+  font-weight: 600;
+}
+
+.form-group input {
+  background: #060d17;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  padding: 0.65rem 0.8rem;
+  color: #ffffff;
+  font-size: 0.9rem;
+  font-family: inherit;
+}
+
+.btn-submit-auth {
+  width: 100%;
+  background: var(--accent-orange);
+  color: #ffffff;
+  border: none;
+  padding: 0.75rem;
+  border-radius: 6px;
+  font-weight: 700;
+  font-family: inherit;
+  cursor: pointer;
+  margin-top: 0.5rem;
+  transition: background 0.2s ease;
+}
+
+.btn-submit-auth:hover {
+  background: var(--accent-orange-hover);
+}
+
+/* RESPONSIVO */
+@media (max-width: 768px) {
+  .page-title {
+    font-size: 2.1rem;
+  }
+  .nav-links {
+    display: none;
+  }
+  .top-bar-container,
+  .footer-container {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+}
+

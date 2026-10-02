@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Centro de Control y Atención Operativa - Serenazgo Alerta Huancayo</title>
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Hoja de Estilos -->
+  <link rel="stylesheet" href="css/panel.css">
+</head>
+<body class="dark-theme">
+
+  <!-- BARRA SUPERIOR DE NAVEGACIÓN -->
+  <header class="top-navbar">
+    <div class="nav-left">
+      <span class="pulse-dot"></span>
+      <h2 class="brand-title">Serenazgo Alerta Huancayo</h2>
+      <small class="sub-brand">Central de Monitoreo y Despacho Operativo — Base Central Huancayo</small>
+    </div>
+    <div class="nav-right" id="nav-auth-container">
+      <div class="user-pill">
+        <i class="fas fa-user-shield"></i>
+        <span id="userNameDisplay">Cargando usuario...</span>
+      </div>
+      <a href="index.html" class="btn-nav"><i class="fas fa-globe"></i> Inicio Público</a>
+      <button class="btn-logout" id="btnLogout"><i class="fas fa-sign-out-alt"></i> Cerrar sesión</button>
+    </div>
+  </header>
+
+  <!-- CONTENEDOR PRINCIPAL -->
+  <main class="dashboard-container">
+    
+    <!-- ENCABEZADO Y BANNER DE ESTADO -->
+    <section class="dashboard-header">
+      <h1>Centro de Control y Atención Operativa</h1>
+      <p class="subtitle">Atención, consulta y resolución de reportes de incidencias de seguridad en tiempo real.</p>
+      
+      <div id="statusBanner" class="status-banner success">
+        <i class="fas fa-check-circle"></i>
+        <span>Verificando credenciales y turno operativo...</span>
+      </div>
+    </section>
+
+    <!-- TARJETAS DE MÉTRICAS -->
+    <section class="metrics-grid">
+      <div class="metric-card total">
+        <div class="metric-icon"><i class="fas fa-folder-open"></i></div>
+        <div class="metric-info">
+          <small>TOTAL INCIDENCIAS</small>
+          <h2 id="cntTotal">0</h2>
+        </div>
+      </div>
+
+      <div class="metric-card pendientes">
+        <div class="metric-icon"><i class="fas fa-clock"></i></div>
+        <div class="metric-info">
+          <small>PENDIENTES</small>
+          <h2 id="cntPendientes">0</h2>
+        </div>
+      </div>
+
+      <div class="metric-card en-proceso">
+        <div class="metric-icon"><i class="fas fa-cogs"></i></div>
+        <div class="metric-info">
+          <small>EN PROCESO</small>
+          <h2 id="cntEnProceso">0</h2>
+        </div>
+      </div>
+
+      <div class="metric-card atendidos">
+        <div class="metric-icon"><i class="fas fa-check-double"></i></div>
+        <div class="metric-info">
+          <small>ATENDIDOS</small>
+          <h2 id="cntAtendidos">0</h2>
+        </div>
+      </div>
+
+      <div class="metric-card rechazados">
+        <div class="metric-icon"><i class="fas fa-times-circle"></i></div>
+        <div class="metric-info">
+          <small>RECHAZADOS</small>
+          <h2 id="cntRechazados">0</h2>
+        </div>
+      </div>
+    </section>
+
+    <!-- TABLA Y FILTROS -->
+    <section class="table-section">
+      <div class="table-card">
+        
+        <div class="table-card-header">
+          <div class="header-title">
+            <i class="fas fa-file-alt"></i>
+            <h3>Registro General de Incidencias</h3>
+          </div>
+          <div class="header-actions">
+            <!-- Botón Naranja fiel a la imagen guía -->
+            <button class="btn-primary-orange" id="btnNuevaAlerta">
+              <span class="icon-circle-plus"><i class="fas fa-plus"></i></span> Registrar Nueva Alerta
+            </button>
+            <button class="btn-secondary" id="btnActualizar">
+              <i class="fas fa-sync-alt"></i> Actualizar
+            </button>
+            <span class="badge-count" id="contadorRegistros">30 Registros</span>
+          </div>
+        </div>
+
+        <!-- BARRA DE BÚSQUEDA INSTANTÁNEA -->
+        <div class="filter-bar">
+          <div class="search-input-wrapper">
+            <i class="fas fa-search"></i>
+            <input type="text" id="inputBuscar" placeholder="Buscar por código, ciudadano, DNI, ubicación o tipo...">
+          </div>
+
+          <div class="select-wrapper">
+            <select id="selectEstado">
+              <option value="TODOS">Todos los estados</option>
+              <option value="PENDIENTE">PENDIENTE</option>
+              <option value="EN PROCESO">EN PROCESO</option>
+              <option value="ATENDIDO">ATENDIDO</option>
+              <option value="RECHAZADO">RECHAZADO</option>
+            </select>
+          </div>
+
+          <button class="btn-clear" id="btnLimpiarFiltros"><i class="fas fa-eraser"></i> Limpiar Filtros</button>
+        </div>
+
+        <!-- TABLA DE REGISTROS -->
+        <div class="table-responsive">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>CÓDIGO</th>
+                <th>FECHA / HORA</th>
+                <th>CIUDADANO</th>
+                <th>DNI / RUC</th>
+                <th>UBICACIÓN / ZONA</th>
+                <th>TIPO INCIDENCIA</th>
+                <th>UNIDAD</th>
+                <th>ESTADO</th>
+                <th>ACCIONES</th>
+              </tr>
+            </thead>
+            <tbody id="tablaIncidenciasBody">
+              <!-- Filas generadas mediante JS -->
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- MODAL: REGISTRAR NUEVA ALERTA -->
+  <div id="modalNuevaAlerta" class="modal-overlay">
+    <div class="modal-card modal-form-card">
+      <div class="modal-header header-blue">
+        <div class="modal-header-title">
+          <i class="fas fa-plus-circle text-orange"></i>
+          <h3>Registrar Nueva Alerta</h3>
+        </div>
+        <button type="button" class="btn-close-modal" id="btnCerrarModalNueva">&times;</button>
+      </div>
+
+      <form id="formNuevaAlerta" class="modal-body">
+        <div class="form-group">
+          <label for="nuevoDni"><i class="fas fa-id-card"></i> DNI del Ciudadano (8 dígitos) *</label>
+          <input type="text" id="nuevoDni" maxlength="8" placeholder="Ej. 73849102" required class="input-modal">
+        </div>
+
+        <div class="form-group margin-top">
+          <label for="nuevoNombre"><i class="fas fa-user"></i> Nombre Completo *</label>
+          <input type="text" id="nuevoNombre" placeholder="Ej. Richard Luis Aguirre" required class="input-modal">
+        </div>
+
+        <div class="form-group margin-top">
+          <label for="nuevaUbicacion"><i class="fas fa-map-marker-alt"></i> Ubicación / Zona / Dirección *</label>
+          <input type="text" id="nuevaUbicacion" placeholder="Ej. Av. Real / Jr. Ayacucho - Huancayo Centro" required class="input-modal">
+        </div>
+
+        <div class="form-group margin-top">
+          <label for="nuevoTipo"><i class="fas fa-exclamation-triangle"></i> Tipo de Incidencia *</label>
+          <select id="nuevoTipo" required class="input-modal">
+            <option value="">-- Seleccionar tipo --</option>
+            <option value="Robo / Asalto">Robo / Asalto</option>
+            <option value="Alteración del Orden">Alteración del Orden</option>
+            <option value="Violencia Familiar">Violencia Familiar</option>
+            <option value="Accidente de Tránsito">Accidente de Tránsito</option>
+            <option value="Sospechosos / Pandillaje">Sospechosos / Pandillaje</option>
+            <option value="Ruidos Molestos">Ruidos Molestos</option>
+            <option value="Comercio Ambulatorio">Comercio Ambulatorio</option>
+          </select>
+        </div>
+
+        <div class="form-group margin-top">
+          <label for="nuevoSustento"><i class="fas fa-comment-dots"></i> Fundamento / Descripción de la Alerta *</label>
+          <textarea id="nuevoSustento" rows="3" placeholder="Describa el detalle de la emergencia u ocurrencia..." required class="text-box-input"></textarea>
+        </div>
+
+        <div class="modal-footer margin-top">
+          <button type="button" class="btn-modal-cancel" id="btnCancelarNueva">Cancelar</button>
+          <button type="submit" class="btn-modal-save">
+            <i class="fas fa-save"></i> Guardar Registro
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- MODAL: DICTAMINAR / ATENDER -->
+  <div id="modalDictamen" class="modal-overlay">
+    <div class="modal-card">
+      <div class="modal-header header-blue">
+        <div class="modal-header-title">
+          <i class="fas fa-headset text-orange"></i>
+          <h3>Centro de Atención y Dictamen de Incidencia</h3>
+        </div>
+        <button type="button" class="btn-close-modal" id="btnCerrarModalDictamen">&times;</button>
+      </div>
+      
+      <div class="modal-body">
+        <div class="grid-modal-details">
+          <div>
+            <span class="field-label">CÓDIGO DE ALERTA:</span>
+            <div id="mCodigo" class="field-value highlight-code">---</div>
+          </div>
+          <div>
+            <span class="field-label">FECHA DE REGISTRO:</span>
+            <div id="mFecha" class="field-value">---</div>
+          </div>
+          <div>
+            <span class="field-label">CIUDADANO:</span>
+            <div id="mCliente" class="field-value">---</div>
+          </div>
+          <div>
+            <span class="field-label">DNI:</span>
+            <div id="mDni" class="field-value">---</div>
+          </div>
+          <div>
+            <span class="field-label">UBICACIÓN / ZONA:</span>
+            <div id="mSuministro" class="field-value">---</div>
+          </div>
+          <div>
+            <span class="field-label">ESTADO ACTUAL:</span>
+            <div><span id="mEstadoBadge" class="badge-estado">---</span></div>
+          </div>
+        </div>
+
+        <div class="form-group margin-top">
+          <label class="field-label">FUNDAMENTO DE LA ALERTA:</label>
+          <textarea id="mSustento" readonly class="text-box-readonly"></textarea>
+        </div>
+
+        <div class="form-group margin-top">
+          <label class="field-label dark-label"><i class="fas fa-edit"></i> Respuesta u Observación de la Central:</label>
+          <textarea id="mRespuesta" placeholder="Escriba el detalle de la atención, despacho de unidad o resolución..." class="text-box-input"></textarea>
+        </div>
+
+        <div class="dictamen-footer margin-top">
+          <label class="field-label dark-label">DICTAMINAR ESTADO:</label>
+          <div class="dictamen-buttons">
+            <button type="button" class="btn-dictamen proceso" id="btnDictamenProceso">
+              <i class="fas fa-spinner fa-spin-pulse"></i> En Proceso
+            </button>
+            <button type="button" class="btn-dictamen rechazar" id="btnDictamenRechazar">
+              <i class="fas fa-times-circle"></i> Rechazar
+            </button>
+            <button type="button" class="btn-dictamen atender" id="btnDictamenAtender">
+              <i class="fas fa-check-circle"></i> Atender
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="js/panel.js"></script>
+  
+</body>
+</html>
